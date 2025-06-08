@@ -5,7 +5,7 @@ const verifyToken = require('../middlewares/authMiddlewares');
 const authorizeRole = require('../middlewares/roleMiddlewares');
 
 // To get all genres
-router.get('/genres', async (req,res)=>{
+router.get('/', async (req,res)=>{
     try{
         const genres = await genreModel.find();
         return res.send(genres);
@@ -17,7 +17,7 @@ router.get('/genres', async (req,res)=>{
 })
 
 // To delete genres
-router.delete('/genres/:id', verifyToken, authorizeRole("admin"), async(req,res)=>{
+router.delete('/:id', verifyToken, authorizeRole("admin"), async(req,res)=>{
     try{
         const {id} = req.params;
         const deleted = await genreModel.findByIdAndDelete(id);
@@ -33,7 +33,7 @@ router.delete('/genres/:id', verifyToken, authorizeRole("admin"), async(req,res)
 })
 
 // To post genres
-router.post('/genres', verifyToken, authorizeRole("admin"), async (req,res)=>{
+router.post('/', verifyToken, authorizeRole("admin"), async (req,res)=>{
     try{
         const {genre} = req.body;
         const newgenre = new genreModel({genre});

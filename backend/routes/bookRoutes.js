@@ -5,7 +5,7 @@ const verifyToken = require('../middlewares/authMiddlewares');
 const authorizeRole = require('../middlewares/roleMiddlewares');
 
 // To get all the books
-router.get('/books', async (req,res)=>{
+router.get('/', async (req,res)=>{
     try{
         const books = await bookModel.find();
         return res.send(books);
@@ -17,7 +17,7 @@ router.get('/books', async (req,res)=>{
 });
 
 //To get book of a title
-router.get('/books/title/:title',async(req,res)=>{
+router.get('/title/:title',async(req,res)=>{
     try{
         const newTitle = req.params.title;
         const book = await bookModel.find({title : { $regex: new RegExp(`^${newTitle}$`, 'i') }});
@@ -30,7 +30,7 @@ router.get('/books/title/:title',async(req,res)=>{
 });
 
 //To get books of a genre
-router.get('/books/genre/:genre', async (req,res)=>{
+router.get('/genre/:genre', async (req,res)=>{
     try{
         const genre = req.params.genre;
         const newbooks = await bookModel.find({genre : genre});
@@ -44,7 +44,7 @@ router.get('/books/genre/:genre', async (req,res)=>{
 });
 
 // To post a book
-router.post('/books', verifyToken, authorizeRole("admin") , async (req,res)=>{
+router.post('/', verifyToken, authorizeRole("admin") , async (req,res)=>{
     try{
         const {title, author, year, genre, img, isbn} = req.body;
         const newBook = new bookModel({title, author, year, genre, img, isbn});
@@ -62,10 +62,10 @@ router.post('/books', verifyToken, authorizeRole("admin") , async (req,res)=>{
 });
 
 //TO update details
-router.put('/books/:isbn',verifyToken, authorizeRole("admin") ,async (req,res)=>{
+router.patch('/:isbn',verifyToken, authorizeRole("admin") ,async (req,res)=>{
     try{
         const updatedBook = await bookModel.findOneAndUpdate(
-            {isbn : req.params.isbn},
+            {isbn : Number(req.params.isbn)},
             req.body,
             { new: true }
         );
@@ -78,7 +78,7 @@ router.put('/books/:isbn',verifyToken, authorizeRole("admin") ,async (req,res)=>
 });
 
 //To delete a book
-router.delete('/books/:isbn', verifyToken, authorizeRole("admin") ,async (req,res)=>{
+router.delete('/:isbn', verifyToken, authorizeRole("admin") ,async (req,res)=>{
     try{
         const deleteIsbn = Number(req.params.isbn);
         const result = await bookModel.deleteOne({isbn : deleteIsbn});

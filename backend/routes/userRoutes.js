@@ -8,7 +8,7 @@ const userModel = require('../models/userModels');
 // for retreiving Admin username
 router.get('/admin', verifyToken, authorizeRole("admin"), async (req,res)=>{
     try{
-        const admin = await userModel.findById(req.admin._id);
+        const admin = await userModel.findById(req.user.id);
         if(!admin){
             return res.status(404).json({message : "Admin not found !"});
         }
@@ -44,7 +44,7 @@ router.get('/users', verifyToken, authorizeRole("admin"), async (req,res)=>{
     }
 })
 
-// for retreiving Admin username
+// for retreiving User details
 router.get('/user/details', verifyToken, authorizeRole("user"), async (req,res)=>{
     try{
         const user = await userModel.findById(req.user.id);

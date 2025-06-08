@@ -7,7 +7,7 @@ const userModel = require('../models/userModels');
 const secret_key = process.env.JWT_SECRET_KEY;
 
 // for register
-router.post('/auth/register',async (req,res)=>{
+router.post('/register',async (req,res)=>{
     try{
         const {email,username,password,role} = req.body;
         
@@ -40,7 +40,7 @@ router.post('/auth/register',async (req,res)=>{
 });
 
 // for login
-router.post('/auth/login', async(req,res)=>{
+router.post('/login', async(req,res)=>{
     try{
         const {username,password} = req.body;
         const user = await userModel.findOne({username : username});

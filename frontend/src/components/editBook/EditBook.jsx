@@ -106,12 +106,15 @@ function EditBook() {
       year,
       genre,
       img,
-      isbn
     }
 
     setIsSubmitting(true);
     try{
-      await axios.put(`http://localhost:5000/api/books/${isbn}`,book);
+      await axios.patch(`http://localhost:5000/api/books/${isbn}`,book, {
+        headers :{
+          Authorization : `Bearer ${token}`
+        }
+      });
       setTitle('');
       setAuthor('');
       setGenre('');

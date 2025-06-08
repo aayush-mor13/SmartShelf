@@ -14,10 +14,10 @@ const PORT = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 
-app.use('/api',bookRoutes);
-app.use('/api',suggestedBookRoutes);
-app.use('/api',genreRoutes);
-app.use('/api',authRoutes);
+app.use('/api/books',bookRoutes);
+app.use('/api/suggestedbooks',suggestedBookRoutes);
+app.use('/api/genres',genreRoutes);
+app.use('/api/auth',authRoutes);
 app.use('/api',userRoutes);
 
 app.listen(PORT,()=>{

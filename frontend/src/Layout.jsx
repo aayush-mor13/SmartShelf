@@ -1,17 +1,17 @@
 import {Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Layout/Navbar';
-import Home from './components/Home/Home';
-import AddBook from './components/Add Book/AddBook';
-import EditBook from './components/Edit Book/EditBook';
-import Footer from './components/Layout/Footer';
-import GenrePage from './components/Genrewise Books/GenrePage';
-import GenreSearch from './components/Genrewise Books/GenreSearch';
-import DeleteBooks from './components/Delete Book/DeleteBooks';
-import Register from './components/Auth/Register';
-import Login from './components/Auth/Login';
-import Dashboard from './components/Admin Dashboard/Dashboard';
-import AddSuggestedBook from './components/Admin Dashboard/AddSuggestedBook';
-import UserSuggestions from './components/User/UserSuggestions';
+import Navbar from './components/layout/Navbar';
+import Home from './components/home/Home';
+import AddBook from './components/addBook/AddBook';
+import EditBook from './components/editBook/EditBook';
+import Footer from './components/layout/Footer';
+import GenrePage from './components/genrewiseBooks/GenrePage';
+import GenreSearch from './components/genrewiseBooks/GenreSearch';
+import DeleteBooks from './components/deleteBook/DeleteBooks';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
+import Dashboard from './components/adminDashboard/Dashboard';
+import AddSuggestedBook from './components/adminDashboard/AddSuggestedBook';
+import UserSuggestions from './components/user/UserSuggestions';
 
 function Layout() {
   const location = useLocation();

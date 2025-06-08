@@ -6,7 +6,7 @@ const authorizeRole = require('../middlewares/roleMiddlewares');
 
 
 // For suggestions
-router.post('/suggestedbooks', async (req,res)=>{
+router.post('/', async (req,res)=>{
     try{
         const {title,author,name,email,notes} = req.body;
         const suggestedBook = await SuggestedBookModel.create({title,author,name,email,notes});
@@ -20,7 +20,7 @@ router.post('/suggestedbooks', async (req,res)=>{
 });
 
 // To get the books based on status
-router.get('/suggestedbooks/:status',verifyToken, authorizeRole("admin"),async (req,res)=>{
+router.get('/:status',verifyToken, authorizeRole("admin"),async (req,res)=>{
     try{
         const {status} = req.params;
         const allowedStatus = ['pending','rejected','accepted'];
@@ -37,7 +37,7 @@ router.get('/suggestedbooks/:status',verifyToken, authorizeRole("admin"),async (
 });
 
 // to delete books
-router.delete('/suggestedbooks/:id',verifyToken, authorizeRole("admin"),async (req,res)=>{
+router.delete('/:id',verifyToken, authorizeRole("admin"),async (req,res)=>{
     try{
         const {id} = req.params;
         const deleted = await SuggestedBookModel.findByIdAndDelete(id);
@@ -55,7 +55,7 @@ router.delete('/suggestedbooks/:id',verifyToken, authorizeRole("admin"),async (r
 });
 
 // To update status
-router.put('/suggestedbooks/:id',verifyToken, authorizeRole("admin"),async (req,res)=>{
+router.put('/:id',verifyToken, authorizeRole("admin"),async (req,res)=>{
     try{
         const {id} = req.params;
         const {status} = req.body;
@@ -73,7 +73,7 @@ router.put('/suggestedbooks/:id',verifyToken, authorizeRole("admin"),async (req,
 });
 
 // To get all the books
-router.get('/suggestedbooks',verifyToken, authorizeRole("admin","user"),async (req,res)=>{
+router.get('/',verifyToken, authorizeRole("admin","user"),async (req,res)=>{
     try{
         const books = await SuggestedBookModel.find();
         return res.send(books);
@@ -85,7 +85,7 @@ router.get('/suggestedbooks',verifyToken, authorizeRole("admin","user"),async (r
 });
 
 // To get all the books
-router.get('/suggestedbooks/user/:username',verifyToken, authorizeRole("user"), async (req,res)=>{
+router.get('/user/:username',verifyToken, authorizeRole("user"), async (req,res)=>{
     try{
         const {username} = req.params;
         const books = await SuggestedBookModel.find({name : username});

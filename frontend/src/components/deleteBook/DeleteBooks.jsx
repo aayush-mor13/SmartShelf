@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import Card from '../Home/Card';
+import Card from '../home/Card';
 import axios from 'axios';
 
 function DeleteBooks() {
