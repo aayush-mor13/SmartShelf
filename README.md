@@ -12,7 +12,7 @@ SmartShelf is a full-stack MERN application designed to manage and explore books
 - Suggest new books using a form
 - Responsive and intuitive UI for smooth navigation
 
-## 🛠️ Admin Features
+### 🛠️ Admin Features
 
 - Secure admin login
 - Admin Dashboard overview
@@ -20,7 +20,7 @@ SmartShelf is a full-stack MERN application designed to manage and explore books
 - Manage book inventory efficiently
 - Manage Suggested books
 
-## 🔐 Authentication & Authorization
+### 🔐 Authentication & Authorization
 
 - User and Admin authentication using **JWT**
 - Role-based access control (**RBAC**) to protect sensitive routes
