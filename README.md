@@ -1,7 +1,7 @@
 # SmartShelf 📚
 
 
-SmartShelf is a full-stack MERN application designed to manage and explore books with ease. It includes both **Admin and User roles**, enabling features like book exploration, suggestions, and inventory management with a clean and responsive UI built using React and Tailwind CSS.
+SmartShelf is a MERN stack application designed to manage and explore books with ease. It includes both **Admin and User roles**, enabling features like book exploration, suggestions, and inventory management with a clean and responsive UI built using React and Tailwind CSS.
 
 ## 🚀 Features
 
